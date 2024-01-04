@@ -4,11 +4,13 @@ export interface Payload {
   connected: boolean;
 }
 
+export interface Payloads {
+  [PayloadType.obc]: Payload;
+  [PayloadType.camera]: Payload;
+}
+
 export interface PowerModuleState {
-  payloads: {
-    obc: Payload;
-    camera: Payload;
-  };
+  payloads: Payloads;
   error: string | null;
 }
 

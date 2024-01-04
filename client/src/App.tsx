@@ -1,5 +1,4 @@
-import './App.css';
-import PowerModuleDisplay from './components/PowerModule';
+import PowerModuleDisplay from './components/PowerModule/PowerModule';
 
 function App() {
   return <PowerModuleDisplay />
