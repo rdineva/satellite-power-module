@@ -4,19 +4,19 @@ export interface Payload {
   connected: boolean;
 }
 
+export enum PayloadType {
+  OBC = 'OBC',
+  Camera = 'Camera'
+}
+
 export interface Payloads {
-  [PayloadType.obc]: Payload;
-  [PayloadType.camera]: Payload;
+  [PayloadType.OBC]: Payload;
+  [PayloadType.Camera]: Payload;
 }
 
 export interface PowerModuleState {
   payloads: Payloads;
   error: string | null;
-}
-
-export enum PayloadType {
-  obc = 'obc',
-  camera = 'camera'
 }
 
 export interface NotificationState {

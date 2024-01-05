@@ -31,7 +31,7 @@ describe('PowerModuleService', () => {
 
     service = module.get<PowerModuleService>(PowerModuleService);
     notificationService = module.get<NotificationService>(NotificationService);
-    jest.spyOn(service, 'randomFluctuation').mockImplementation((value) => value + 1);
+    jest.spyOn(service, 'gradualFluctuation').mockImplementation((value) => value + 1);
   });
 
   it('should be defined', () => {
@@ -40,8 +40,8 @@ describe('PowerModuleService', () => {
 
   it('gets current state and returns data in the correct format', () => {
     const expectedState = {
-      camera: { batteryVoltage: expect.any(Number), currentDraw: expect.any(Number), connected: expect.any(Boolean) },
-      obc: { batteryVoltage: expect.any(Number), currentDraw: expect.any(Number), connected: expect.any(Boolean) }
+      Camera: { batteryVoltage: expect.any(Number), currentDraw: expect.any(Number), connected: expect.any(Boolean) },
+      OBC: { batteryVoltage: expect.any(Number), currentDraw: expect.any(Number), connected: expect.any(Boolean) }
     };
 
     const powerModuleState = service.getCurrentState();
@@ -49,48 +49,48 @@ describe('PowerModuleService', () => {
   });
 
   it('connects obc payload', () => {
-    expect(service.getCurrentState().obc.connected).toBeTruthy();
+    expect(service.getCurrentState().OBC.connected).toBeTruthy();
 
-    service.disconnectPayload(PayloadType.obc)
-    expect(service.getCurrentState().obc.connected).toBeFalsy();
+    service.disconnectPayload(PayloadType.OBC)
+    expect(service.getCurrentState().OBC.connected).toBeFalsy();
 
-    service.connectPayload(PayloadType.obc)
-    expect(service.getCurrentState().obc.connected).toBeTruthy();
-    expect(service.getCurrentState().obc.currentDraw).toBeGreaterThan(0);
+    service.connectPayload(PayloadType.OBC)
+    expect(service.getCurrentState().OBC.connected).toBeTruthy();
+    expect(service.getCurrentState().OBC.currentDraw).toBeGreaterThan(0);
   });
 
   it('disconnects obc payload', () => {
-    expect(service.getCurrentState().obc.connected).toBeTruthy();
+    expect(service.getCurrentState().OBC.connected).toBeTruthy();
 
-    service.disconnectPayload(PayloadType.obc)
-    expect(service.getCurrentState().obc.connected).toBeFalsy();
-    expect(service.getCurrentState().obc.currentDraw).toBe(0);
+    service.disconnectPayload(PayloadType.OBC)
+    expect(service.getCurrentState().OBC.connected).toBeFalsy();
+    expect(service.getCurrentState().OBC.currentDraw).toBe(0);
   });
 
   it('connects camera payload', () => {
-    expect(service.getCurrentState().camera.connected).toBeTruthy();
+    expect(service.getCurrentState().Camera.connected).toBeTruthy();
 
-    service.disconnectPayload(PayloadType.camera)
-    expect(service.getCurrentState().camera.connected).toBeFalsy();
+    service.disconnectPayload(PayloadType.Camera)
+    expect(service.getCurrentState().Camera.connected).toBeFalsy();
 
-    service.connectPayload(PayloadType.camera)
-    expect(service.getCurrentState().camera.connected).toBeTruthy();
-    expect(service.getCurrentState().camera.currentDraw).toBeGreaterThan(0);
+    service.connectPayload(PayloadType.Camera)
+    expect(service.getCurrentState().Camera.connected).toBeTruthy();
+    expect(service.getCurrentState().Camera.currentDraw).toBeGreaterThan(0);
   });
 
   it('disconnects camera payload', () => {
-    expect(service.getCurrentState().camera.connected).toBeTruthy();
+    expect(service.getCurrentState().Camera.connected).toBeTruthy();
 
-    service.disconnectPayload(PayloadType.camera)
-    expect(service.getCurrentState().camera.connected).toBeFalsy();
-    expect(service.getCurrentState().camera.currentDraw).toBe(0);
+    service.disconnectPayload(PayloadType.Camera)
+    expect(service.getCurrentState().Camera.connected).toBeFalsy();
+    expect(service.getCurrentState().Camera.currentDraw).toBe(0);
   });
 
-  it('should simulate fluctuations every 5 seconds', () => {
+  it('should simulate fluctuations every second', () => {
     service.simulateFluctuations();
-    jest.advanceTimersByTime(5000);
+    jest.advanceTimersByTime(1000);
 
-    expect(service.randomFluctuation).toHaveBeenCalledTimes(2 * Object.keys(service.getCurrentState()).length);
+    expect(service.gradualFluctuation).toHaveBeenCalledTimes(2 * Object.keys(service.getCurrentState()).length);
 
     expect(notificationService.dispatchAlerts).toHaveBeenCalledWith(Object.values(service.getCurrentState()));
   });
@@ -102,7 +102,7 @@ describe('PowerModuleService', () => {
     const afterState = service.getCurrentState();
     expect(afterState).not.toEqual(beforeState);
 
-    expect(afterState.camera.currentDraw).not.toBe(beforeState.camera.currentDraw);
-    expect(afterState.obc.batteryVoltage).not.toBe(beforeState.obc.batteryVoltage);
+    expect(afterState.Camera.currentDraw).not.toBe(beforeState.Camera.currentDraw);
+    expect(afterState.OBC.batteryVoltage).not.toBe(beforeState.OBC.batteryVoltage);
   });
 });

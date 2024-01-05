@@ -24,11 +24,11 @@ const CommandingPanel = ({ payloads }: Props) => {
     <div className="commanding-panel">
       <div>Commanding</div>
       <div className="buttons-container">
-        <button className="button" onClick={() => onClicked(PayloadType.obc)}>
-          {payloads.obc.connected ? 'Disconnect' : 'Connect'} OBC
+        <button className="button" onClick={() => onClicked(PayloadType.OBC)}>
+          {payloads.OBC.connected ? 'Disconnect' : 'Connect'} OBC
         </button>
-        <button className="button" onClick={() => onClicked(PayloadType.camera)}>
-          {payloads.camera.connected ? 'Disconnect' : 'Connect'} Camera
+        <button className="button" onClick={() => onClicked(PayloadType.Camera)}>
+          {payloads.Camera.connected ? 'Disconnect' : 'Connect'} Camera
         </button>
       </div>
     </div>

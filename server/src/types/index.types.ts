@@ -1,6 +1,6 @@
 export enum PayloadType {
-  obc = 'obc',
-  camera = 'camera'
+  OBC = 'OBC',
+  Camera = 'Camera',
 };
 
 export interface Payload {
@@ -12,5 +12,10 @@ export interface Payload {
 export enum AlertType {
   LowVoltage = 'Low Voltage',
   FullCharge = 'Full Charge',
-  HighCurrentDraw = 'High Current Draw'
+  HighCurrentDraw = 'High Current Draw',
+}
+
+export enum ChannelType {
+  Teams = 'MS Teams',
+  Mail = 'Email',
 }

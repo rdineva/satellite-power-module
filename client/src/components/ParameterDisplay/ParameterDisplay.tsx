@@ -6,11 +6,11 @@ interface Props {
 }
 
 const ParameterDisplay = ({ payloads }: Props) => {
-  const { obc, camera } = payloads;
-  const obcBatteryVoltage = obc.batteryVoltage;
-  const obcCurrentDraw = obc.currentDraw;
-  const cameraBatteryVoltage = camera.batteryVoltage;
-  const cameraCurrentDraw = camera.currentDraw;
+  const { OBC, Camera } = payloads;
+  const obcBatteryVoltage = OBC.batteryVoltage;
+  const obcCurrentDraw = OBC.currentDraw;
+  const cameraBatteryVoltage = Camera.batteryVoltage;
+  const cameraCurrentDraw = Camera.currentDraw;
 
   return (
     <div className="parameters-display">

@@ -6,8 +6,8 @@ import { PowerModuleActionTypes, actions } from './actions';
 
 const initialState: PowerModuleState = {
   payloads: {
-    [PayloadType.obc]: { batteryVoltage: 0, currentDraw: 0, connected: false },
-    [PayloadType.camera]: { batteryVoltage: 0, currentDraw: 0, connected: false }
+    [PayloadType.OBC]: { batteryVoltage: 0, currentDraw: 0, connected: false },
+    [PayloadType.Camera]: { batteryVoltage: 0, currentDraw: 0, connected: false }
   },
   error: null
 };

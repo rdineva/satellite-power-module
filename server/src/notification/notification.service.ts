@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { AlertType, Payload } from '../types/index.types';
+import { AlertType, ChannelType, Payload } from '../types/index.types';
 import { NotificationGateway } from '../notification/notification.gateway';
+import { HIGH_CURRENT_DRAW, LOW_VOLTAGE, MAX_BATTERY_VOLTAGE } from 'src/constants/constants';
 
 @Injectable()
 export class NotificationService {
@@ -9,8 +10,11 @@ export class NotificationService {
   private alerts = new Set<AlertType>();
 
   dispatchAlerts(payloads: Payload[]) {
-    this.alerts.clear();
+    if (!payloads) {
+      throw new Error('Invalid payloads data');
+    }
 
+    this.alerts.clear();
     payloads.forEach(payload => {
       this.checkForVoltageAlert(payload.batteryVoltage);
       this.checkForCurrentDrawAlert(payload.currentDraw);
@@ -24,25 +28,22 @@ export class NotificationService {
   }
 
   private checkForVoltageAlert(voltage: number) {
-    if (voltage < 18) {
-      const message = `Low Voltage Alert {voltage: ${voltage}}`;
-      console.log(`Email and MS Teams Notification Sent: ${message}`);
-
-      this.alerts.add(AlertType.LowVoltage);
-    } else if (voltage >= 30) {
-      const message = `Full Charge Alert {voltage: ${voltage}}`;
-      console.log(`MS Teams Notification Sent: ${message}`);
-
-      this.alerts.add(AlertType.FullCharge);
+    if (voltage < LOW_VOLTAGE) {
+      this.logAndAddAlert(`Low Voltage Alert {voltage: ${voltage}}`, AlertType.LowVoltage, [ChannelType.Mail, ChannelType.Teams]);
+    } else if (voltage >= MAX_BATTERY_VOLTAGE) {
+      this.logAndAddAlert(`Full Charge Alert {voltage: ${voltage}}`, AlertType.FullCharge, [ChannelType.Teams]);
     }
   }
 
   private checkForCurrentDrawAlert(current: number) {
-    if (current > 3) {
-      const message = `High Current Alert {current: ${current}}`;
-      console.log(`Email Notification Sent: ${message}`);
-
-      this.alerts.add(AlertType.HighCurrentDraw);
+    if (current > HIGH_CURRENT_DRAW) {
+      this.logAndAddAlert(`High Current Alert {current: ${current}}`, AlertType.HighCurrentDraw, [ChannelType.Mail]);
     }
+  }
+
+  private logAndAddAlert(alertMessage: string, alertType: AlertType, notificationChannels: string[]) {
+    const message = `${notificationChannels.join(' and ')} Notification Sent: ${alertMessage}`;
+    console.log(message);
+    this.alerts.add(alertType);
   }
 }
