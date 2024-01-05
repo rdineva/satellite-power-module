@@ -1,12 +1,7 @@
-.parameters-display {
-  display: flex;
-}
-
 .voltage-display,
 .current-draw-display {
   display: flex;
   flex-direction: column;
-  border: 1px solid #000;
   border-radius: 10px;
   gap: 30px;
   margin-bottom: 30px;

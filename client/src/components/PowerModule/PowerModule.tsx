@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPowerModuleState } from '../../store/power-module/actions';
 import { AppState, AppDispatch } from '../../store';
 import './PowerModule.css';
-import ParameterDisplay from '../ParameterDisplay/ParameterDisplay';
 import CommandingPanel from '../CommandingPanel/CommandingPanel';
 import NotificationsPanel from '../NotificationsPanel/NotificationsPanel';
+import PayloadDisplay from '../PayloadDisplay/PayloadDisplay';
 
 const PowerModuleDisplay = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,8 +26,8 @@ const PowerModuleDisplay = () => {
   return (
     <div className="power-module-display">
       <div className="power-module-state">
-        <ParameterDisplay payloads={payloads}></ParameterDisplay>
-        <CommandingPanel payloads={payloads}></CommandingPanel>
+        <PayloadDisplay payloads={payloads} />
+        <CommandingPanel payloads={payloads} />
       </div>
       <NotificationsPanel />
     </div>
