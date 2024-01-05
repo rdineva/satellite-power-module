@@ -2,10 +2,37 @@
   margin-left: 40px;
   border: 1px solid #000;
   min-width: 200px;
+  padding: 0 20px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid #d0d0d0;
 }
 
 .title {
   text-align: center;
   font-size: 20px;
   margin: 10px 0;
+}
+
+.notification {
+  height: 30px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  min-height: 40px;
+}
+
+.full-charge {
+  border: 2px solid rgb(31, 146, 31);
+  background-color: rgb(188, 218, 188);
+}
+
+.low-voltage {
+  border: 2px solid rgb(252, 68, 68);
+  background-color: rgb(249, 180, 180);
+}
+
+.high-current-draw {
+  border: 2px solid rgb(255, 255, 51);
+  background-color: rgb(255, 255, 182);
 }

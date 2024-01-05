@@ -7,10 +7,10 @@ interface Props {
 
 const ParameterDisplay = ({ payloads }: Props) => {
   const { obc, camera } = payloads;
-  const obcBatteryVoltage = Math.round(obc.batteryVoltage);
-  const obcCurrentDraw = Math.round(obc.currentDraw);
-  const cameraBatteryVoltage = Math.round(camera.batteryVoltage);
-  const cameraCurrentDraw = Math.round(camera.currentDraw);
+  const obcBatteryVoltage = obc.batteryVoltage;
+  const obcCurrentDraw = obc.currentDraw;
+  const cameraBatteryVoltage = camera.batteryVoltage;
+  const cameraCurrentDraw = camera.currentDraw;
 
   return (
     <div className="parameters-display">

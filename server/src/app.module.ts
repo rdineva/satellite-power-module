@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
-import { PowerModuleModule } from './power-module/power-module.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { PowerModuleController } from './power-module/power-module.controller';
+import { NotificationGateway } from './notification/notification.gateway';
+import { NotificationService } from './notification/notification.service';
+import { PowerModuleService } from './power-module/power-module.service';
 
 @Module({
   imports: [
-    PowerModuleModule,
     ScheduleModule.forRoot(),
   ],
-  controllers: [],
-  providers: [],
+  controllers: [PowerModuleController],
+  providers: [PowerModuleService, NotificationService, NotificationGateway],
 })
 export class AppModule { }

@@ -1,8 +1,8 @@
 import { ActionType, createAsyncAction } from 'typesafe-actions';
 import { ThunkDispatch } from 'redux-thunk';
-import { PowerModuleState, PayloadType } from '../types';
-import axios from 'axios';
-import ApiService from '../services/api-service';
+import { PowerModuleState, PayloadType } from '../../types';
+import ApiService from '../../services/api-service';
+import { handleAxiosError } from '../helpers';
 
 export const actions = {
   fetchPowerModuleState: createAsyncAction(
@@ -20,16 +20,6 @@ export const actions = {
     'DISCONNECT_PAYLOAD_SUCCESS',
     'DISCONNECT_PAYLOAD_ERROR',
   )<PayloadType, PayloadType, string>(),
-};
-
-const handleAxiosError = (error: unknown): string => {
-  if (axios.isAxiosError(error)) {
-    return error.response?.data.message || error.message;
-  } else if (error instanceof Error) {
-    return error.message;
-  } else {
-    return 'An unknown error occurred';
-  }
 };
 
 export const fetchPowerModuleState = () => async (dispatch: ThunkDispatch<any, any, any>) => {

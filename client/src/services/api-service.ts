@@ -19,6 +19,10 @@ const ApiService = {
   disconnectPayload(payloadType: PayloadType) {
     return apiClient.post(`/power-module/disconnect/${payloadType}`);
   },
+
+  getNotifications() {
+    return apiClient.get('/notifications');
+  }
 };
 
 export default ApiService;

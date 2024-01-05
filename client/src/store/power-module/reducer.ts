@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { getType } from 'typesafe-actions';
-import { PayloadType } from '../types';
-import { PowerModuleState } from '../types';
+import { PayloadType } from '../../types';
+import { PowerModuleState } from '../../types';
 import { PowerModuleActionTypes, actions } from './actions';
 
 const initialState: PowerModuleState = {

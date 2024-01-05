@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPowerModuleState } from '../../store/actions';
+import { fetchPowerModuleState } from '../../store/power-module/actions';
 import { AppState, AppDispatch } from '../../store';
 import './PowerModule.css';
 import ParameterDisplay from '../ParameterDisplay/ParameterDisplay';
@@ -11,7 +11,7 @@ const PowerModuleDisplay = () => {
   const dispatch = useDispatch<AppDispatch>();
   const intervalTime = 1000;
 
-  const payloads = useSelector((state: AppState) => state.fetchPowerModuleState);
+  const payloads = useSelector((state: AppState) => state.powerModule.fetchPowerModuleState);
 
   useEffect(() => {
     dispatch(fetchPowerModuleState());
@@ -29,7 +29,7 @@ const PowerModuleDisplay = () => {
         <ParameterDisplay payloads={payloads}></ParameterDisplay>
         <CommandingPanel payloads={payloads}></CommandingPanel>
       </div>
-      <NotificationsPanel notifications={[]}></NotificationsPanel>
+      <NotificationsPanel />
     </div>
   );
 };

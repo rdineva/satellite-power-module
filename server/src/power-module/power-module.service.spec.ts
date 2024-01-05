@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PowerModuleService } from './power-module.service';
-import { PayloadType } from '../types/payload.types';
-import { NotificationService } from '../notification-service/notification.service';
+import { PayloadType } from '../types/index.types';
+import { NotificationService } from '../notification/notification.service';
 import { ScheduleModule } from '@nestjs/schedule';
 
-jest.mock('../notification-service/notification.service', () => {
+jest.mock('../notification/notification.service', () => {
   return {
     NotificationService: jest.fn().mockImplementation(() => {
       return {
-        checkAndNotify: jest.fn(),
+        dispatchAlerts: jest.fn(),
       };
     }),
   };
@@ -92,7 +92,7 @@ describe('PowerModuleService', () => {
 
     expect(service.randomFluctuation).toHaveBeenCalledTimes(2 * Object.keys(service.getCurrentState()).length);
 
-    expect(notificationService.checkAndNotify).toHaveBeenCalledWith(Object.values(service.getCurrentState()));
+    expect(notificationService.dispatchAlerts).toHaveBeenCalledWith(Object.values(service.getCurrentState()));
   });
 
   it('payload state changes over time', () => {

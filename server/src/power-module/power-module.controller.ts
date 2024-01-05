@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Param } from '@nestjs/common';
 import { PowerModuleService } from './power-module.service';
-import { PayloadType } from '../types/payload.types';
+import { PayloadType } from '../types/index.types';
 
 @Controller('power-module')
 export class PowerModuleController {

@@ -18,3 +18,14 @@ export enum PayloadType {
   obc = 'obc',
   camera = 'camera'
 }
+
+export interface NotificationState {
+  notifications: NotificationType[];
+  error: string | null;
+}
+
+export enum NotificationType {
+  LowVoltage = 'Low Voltage',
+  FullCharge = 'Full Charge',
+  HighCurrentDraw = 'High Current Draw'
+}

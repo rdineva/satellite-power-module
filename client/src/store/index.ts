@@ -1,8 +1,8 @@
-import powerModuleReducer from './reducer';
 import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './rootReducer';
 
 export const store = configureStore({
-  reducer: powerModuleReducer,
+  reducer: rootReducer,
 });
 
 export type AppState = ReturnType<typeof store.getState>;
