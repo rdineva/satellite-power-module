@@ -37,7 +37,7 @@ const NotificationsPanel = () => {
 
   return (
     <div className="notifications">
-      <div className="title">Notifications</div>
+      <div className="notification-title">Notifications</div>
       {notifications.map(renderNotification)}
     </div>
   );

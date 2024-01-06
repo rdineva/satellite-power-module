@@ -1,8 +1,15 @@
 .power-module-display {
   display: flex;
   justify-content: center;
-  width: 100vw;
-  margin: 30px;
+  padding: 20px 30px;
+  background: var(--light-grey-gradient);
+  border: 1px solid var(--main-grey);
+  width: 50vw;
+  border-radius: 5px;
+}
+
+.power-module-display:hover {
+  background: var(--light-grey-gradient-hover);
 }
 
 .power-module-state {

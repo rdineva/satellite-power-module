@@ -1,23 +1,24 @@
-.voltage-display,
-.current-draw-display {
+.parameter {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   gap: 30px;
   margin-bottom: 30px;
   padding: 10px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-  border: 1px solid #d0d0d0;
+  background-color: var(--black);
+  border: 1px solid var(--main-grey);
 }
 
 .obc {
   margin-right: 30px;
 }
 
-.title {
+.payload-title {
   text-align: center;
   font-size: 20px;
   margin-bottom: 10px;
+  color: var(--main-blue);
+  font-weight: 600;
 }
 
 .parameter-value {

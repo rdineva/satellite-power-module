@@ -1,4 +1,5 @@
 import { PayloadType } from '../../types';
+import './CommandingButton.css';
 
 interface Props {
   payloadType: PayloadType;
