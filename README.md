@@ -3,7 +3,7 @@
 ## Setup
 
 ### Install dependencies
-Run `npm install` in both `./client` and `./server``
+Run `npm install` in both `./client` and `./server`
 
 ## Start
 
