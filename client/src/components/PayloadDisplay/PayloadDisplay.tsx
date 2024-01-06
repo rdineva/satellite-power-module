@@ -13,12 +13,12 @@ const PayloadDisplay = ({ payloads }: Props) => {
     <div className="parameters-display">
       <PayloadParameters
         payloadType={PayloadType.OBC}
-        voltage={OBC.batteryVoltage}
+        voltage={OBC.voltage}
         currentDraw={OBC.currentDraw}
       />
       <PayloadParameters
         payloadType={PayloadType.Camera}
-        voltage={Camera.batteryVoltage}
+        voltage={Camera.voltage}
         currentDraw={Camera.currentDraw}
       />
     </div>

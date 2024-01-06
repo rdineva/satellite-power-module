@@ -21,7 +21,7 @@ const getNotificationTypeStyles = (notification: NotificationType) => {
 const renderNotification = (notification: NotificationType, index: number) => {
   const customStyles = getNotificationTypeStyles(notification);
   return (
-    <div key={index} className={`notification ${customStyles}`}>
+    <div key={notification} className={`notification ${customStyles}`}>
       {notification}
     </div>
   );

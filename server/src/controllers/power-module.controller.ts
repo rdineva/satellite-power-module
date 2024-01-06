@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Param, HttpException, HttpStatus } from '@nestjs/common';
-import { PowerModuleService } from './power-module.service';
+import { PowerModuleService } from '../services/power-module.service';
 import { PayloadType } from '../types/index.types';
 
 @Controller('power-module')

@@ -4,7 +4,7 @@ export enum PayloadType {
 };
 
 export interface Payload {
-  batteryVoltage: number;
+  voltage: number;
   currentDraw: number;
   connected: boolean;
 }
@@ -18,4 +18,14 @@ export enum AlertType {
 export enum ChannelType {
   Teams = 'MS Teams',
   Mail = 'Email',
+}
+
+export enum CommandAction {
+  Connect = 'connect',
+  Disconnect = 'disconnect',
+}
+
+export interface Payloads {
+  [PayloadType.OBC]: Payload;
+  [PayloadType.Camera]: Payload;
 }

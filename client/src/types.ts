@@ -1,5 +1,5 @@
 export interface Payload {
-  batteryVoltage: number;
+  voltage: number;
   currentDraw: number;
   connected: boolean;
 }
