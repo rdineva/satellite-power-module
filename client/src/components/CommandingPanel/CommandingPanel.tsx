@@ -21,7 +21,7 @@ const CommandingPanel = ({ payloads }: Props) => {
 
   return (
     <div className="commanding-panel">
-      <div>Commanding</div>
+      <div>Commanding Panel</div>
       <div className="buttons-container">
         <CommandingButton payloadType={PayloadType.OBC} connected={payloads.OBC.connected} onClick={onClicked} />
         <CommandingButton payloadType={PayloadType.Camera} connected={payloads.Camera.connected} onClick={onClicked} />

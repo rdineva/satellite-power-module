@@ -16,7 +16,7 @@ const PayloadParameters = ({ payloadType, voltage, currentDraw }: Props) => {
       <div className="payload-title">{payloadType}</div>
       <div className="parameter">
         <div className="parameter-value">{voltage}V</div>
-        <div>Pack {index} label</div>
+        <div>Pack {index} voltage</div>
       </div>
       <div className="parameter">
         <div className="parameter-value">{currentDraw}A</div>
