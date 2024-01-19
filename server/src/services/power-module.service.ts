@@ -56,31 +56,24 @@ export class PowerModuleService {
   }
 
   public async connectPayload(payloadType: PayloadType): Promise<void> {
-    if (!this.payloads[payloadType]) {
-      throw new BadRequestException(`Invalid payload type: ${payloadType}`);
-    }
-
-    this.payloads[payloadType].connected = true;
-    this.payloads[payloadType].currentDraw = 1;
-    this.notificationService.dispatchAlerts(this.payloads);
-
-    await this.commandService.create({
-      action: CommandAction.Connect,
-      payload: payloadType
-    } as Command);
+    this.changePayloadState(payloadType, true, 1, CommandAction.Connect);
   }
 
   public async disconnectPayload(payloadType: PayloadType): Promise<void> {
+    this.changePayloadState(payloadType, false, 0, CommandAction.Disconnect);
+  }
+
+  private async changePayloadState(payloadType: PayloadType, connected: boolean, newCurrentDraw: number, action: CommandAction) {
     if (!this.payloads[payloadType]) {
       throw new BadRequestException(`Invalid payload type: ${payloadType}`);
     }
 
-    this.payloads[payloadType].connected = false;
-    this.payloads[payloadType].currentDraw = 0;
+    this.payloads[payloadType].connected = connected;
+    this.payloads[payloadType].currentDraw = newCurrentDraw;
     this.notificationService.dispatchAlerts(this.payloads);
 
     await this.commandService.create({
-      action: CommandAction.Disconnect,
+      action,
       payload: payloadType
     } as Command);
   }
