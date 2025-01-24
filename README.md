@@ -1,6 +1,7 @@
 # Satellite Power Module Dashboard Simulation
 
-![Screenshot 2024-01-20 at 21 12 32](https://github.com/rdineva/satellite-power-module/assets/32228357/d0d98bee-e7ac-4faf-a080-b898b85ddb02)
+![Screen Recording 2025-01-24 at 21 24 07](https://github.com/user-attachments/assets/c4615f12-d4f3-4385-962f-f77a5c9e16e3)
+
 
 ## Overview
 The application simulates the workflow of a satellite power module. It has two payloads - an *On-Board Computer (OBC)* and a *Camera*. Each of them has a *voltage* and a *current draw* property. The fluctuating values of those are simulated by a function that evaluates every second on the server.
