@@ -11,9 +11,15 @@ The **Display Panel** shows the current state of the battery voltage and the cur
 The **Commanding Panel** has functionality for connecting and disconnecting each payload. When a payload is disconnected, it stops drawing current.
 
 The **Notification Panel** shows the current alerts, if there are any. There are three types:
-- _Low Voltage Alert_ - when voltage falls below 18V
-- _Full Charge Alert_ - activated at a voltage of 30V
-- _High Current Alert_ - when current draw exceeds 3A
+- **Low Voltage Alert** - when voltage falls below 18V
+- **Full Charge Alert** - activated at a voltage of 30V
+- **High Current Alert** - when current draw exceeds 3A
+
+## Tech Stack
+
+*Front-end* - ReactJS, Redux, TypeScript
+
+*Back-end* - NestJS, TypeScript, MongoDB
 
 ## Setup
 
@@ -25,20 +31,20 @@ $ cd ./server && npm install
 
 ## Running the application
 
-### Start Database
+### Database
 You need to have **MongoDB** installed. A client like *MongoDB Compass* is needed for setting up the database.
 
 The URI Connection string should be `mongodb://localhost/satellite-power-module`.
 
 Connect to the database and after running the server, the tables will be automatically created.
 
-### Start server
+### Server
 ```shell
 $ cd ./server
 $ npm run start
 ```
 
-### Start client
+### Client
 ```shell
 $ cd ./client
 $ npm run start
@@ -49,8 +55,3 @@ $ npm run start
 $ cd ./server
 $ npm run test
 ```
-
-## Tech Stack
-*Front-end* - ReactJS, Redux, TypeScript
-
-*Back-end* - NestJS, TypeScript, MongoDB
