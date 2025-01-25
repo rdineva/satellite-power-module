@@ -11,15 +11,15 @@ The **Display Panel** shows the current state of the battery voltage and the cur
 The **Commanding Panel** has functionality for connecting and disconnecting each payload. When a payload is disconnected, it stops drawing current.
 
 The **Notification Panel** shows the current alerts, if there are any. There are three types:
-- **Low Voltage Alert** - when voltage falls below 18V
-- **Full Charge Alert** - activated at a voltage of 30V
-- **High Current Alert** - when current draw exceeds 3A
+- _Low Voltage Alert_ - when voltage falls below 18V
+- _Full Charge Alert_ - activated at a voltage of 30V
+- _High Current Alert_ - when current draw exceeds 3A
 
 ## Tech Stack
 
-*Front-end* - ReactJS, Redux, TypeScript
+**Front-end** - ReactJS, Redux, TypeScript
 
-*Back-end* - NestJS, TypeScript, MongoDB
+**Back-end** - NestJS, TypeScript, MongoDB
 
 ## Setup
 
